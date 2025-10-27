@@ -12,5 +12,5 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
     react()],
-    base: process.env.VITE_BASE_PATH || "/flight_booking_system"
+    base: './'
 })
