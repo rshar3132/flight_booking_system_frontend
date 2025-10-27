@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
 import { getItem, setItem, removeItem } from "../utils/localStorage";
-
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 
 
@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
     // -------------------------------------------
     const login = async (email, password) => {
         try {
-            const response = await axios.post("/api/login", {
+            const response = await axios.post(`${API_BASE_URL}/api/login`, {
                 email,
                 password,
             });
@@ -59,7 +59,7 @@ export const AuthProvider = ({ children }) => {
 
     const register = async (name, email, password) => {
     try {
-        const response = await axios.post("/api/register", { name, email, password });
+        const response = await axios.post(`${API_BASE_URL}/api/register`, { name, email, password });
         console.log(response.data.message);
         return { success: true, message: response.data.message };
     } catch (error) {
@@ -75,7 +75,7 @@ export const AuthProvider = ({ children }) => {
     const logout = async () => {
         try {
             if (refreshToken) {
-                await axios.post("/api/logout", {
+                await axios.post(`${API_BASE_URL}/api/logout`, {
                     refreshToken,
                 });
             }
@@ -103,7 +103,7 @@ export const AuthProvider = ({ children }) => {
         try {
             if (!refreshToken) return null;
 
-            const response = await axios.post("/api/refresh", {
+            const response = await axios.post(`${API_BASE_URL}/api/refresh`, {
                 refreshToken,
             });
 

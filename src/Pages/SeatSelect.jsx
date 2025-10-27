@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 import Flight_id from "../components/bookSeat/Flight_id";
 import { UseBooking } from "../contexts/Useboooking";
 import { useLocation } from "react-router-dom";
@@ -24,7 +25,7 @@ const SeatSelect = () => {
 
     const fetchFlightData = async () => {
       try {
-        const response = await axios.get(`/api/flight/${flightId}`);
+        const response = await axios.get(`${API_BASE_URL}/api/flight/${flightId}`);
         const flightData = response.data;
 
         setFlight(flightData);

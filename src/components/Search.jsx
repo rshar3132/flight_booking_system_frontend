@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios'; // run this-> npm i axios
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -16,7 +17,7 @@ const Search = () => {
     const SearchForFlights = async (source, destination, date) => {
         try {
             console.log('Searching flights with:', { source, destination, date });
-            const response = await axios.post('/api/search_flights', { source, destination, date });
+            const response = await axios.post(`${API_BASE_URL}/api/search_flights`, { source, destination, date });
             const flightsData = response.data[0];
             setFlights(flightsData);
         } catch (error) {
