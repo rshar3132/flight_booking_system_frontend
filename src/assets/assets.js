@@ -1,5 +1,5 @@
 import logo from "./logo1.png";
-import background from "./background.jpeg";
+import background from "./background2.jpeg";
 import menuIcon from "./menuIcon.svg";
 import closeIcon from "./closeIcon.svg";
 import zara from "./zara.jpeg"
